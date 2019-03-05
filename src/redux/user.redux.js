@@ -43,11 +43,6 @@ export function user(state = initState, action) {
     }
 }
 
-export function loadData(userinfo){
-	console.log(loadData)
-	return { type:LOAD_DATA, payload:userinfo}
-}
-
 function registerSuccess(data) {
     return { type: REGISTER_SUCCESS, payload: data }
 }
@@ -60,19 +55,9 @@ function errorMsg(msg) {
     return { msg, type: ERROR_MSG }
 }
 
-export function userinfo () {
-    // 获取用户信息
-        axios.get('/user/info')
-        .then(res=>{
-            if (res.status===200) {
-                if (res.data.code===0) {
-                    // 有登录信息的
-                } else {
-                    this.props.history.push('/login')
-                }
-            }
-        })
-       
+export function loadData(userinfo){
+	console.log(loadData)
+	return { type:LOAD_DATA, payload:userinfo}
 }
 
 export function login({ user, pwd }) {
