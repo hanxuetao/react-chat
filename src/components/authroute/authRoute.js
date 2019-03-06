@@ -25,7 +25,7 @@ class AuthRoute extends React.Component {
                         //有登录信息的
                         this.props.loadData(res.data.data)
                     } else {
-                        this.props.history.push('./login')
+                        this.props.history.push('/login')
                         console.log(this.props.history) //authRoute组件没有操作路由的方法
                     }
                     console.log(res.data)

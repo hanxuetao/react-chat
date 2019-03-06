@@ -15,6 +15,9 @@ import './config'
 import Login from './container/login/login'
 import Register from './container/register/register'
 import AuthRoute from './components/authroute/authRoute'
+import BossInfo from './container/bossinfo/bossinfo'
+import GenuisInfo from './container/genuisinfo/genuisinfo'
+
 
 const reduxDevtools = window.devToolsExtension ? window.devToolsExtension() : f => f
 const store = createStore(reducers, compose(
@@ -22,9 +25,6 @@ const store = createStore(reducers, compose(
     reduxDevtools
 ))
 
-function Boss() {
-    return <h2>Boss Page</h2>
-}
 
 ReactDOM.render(
     (
@@ -32,7 +32,8 @@ ReactDOM.render(
         <BrowserRouter>
             <div>
                 <AuthRoute></AuthRoute>
-                <Route path='/boss' component={Boss}></Route>
+                <Route path='/geniusinfo' component={GenuisInfo}></Route>
+                <Route path='/bossinfo' component={BossInfo}></Route>
                 <Route path='/login' component={Login}></Route>
                 <Route path='/Register' component={Register}></Route>
             </div>
