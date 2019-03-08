@@ -4,29 +4,23 @@ import { List, InputItem, WingBlank, WhiteSpace, Button } from 'antd-mobile'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { login } from '../../redux/user.redux'
+import imoocForm from '../../components/imoocForm/imoocForm'
 
 @connect(
     state => state.user,
     { login }
 )
+@imoocForm
 class Login extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            user: '',
-            pwd: ''
-        }
         this.register = this.register.bind(this)
         this.handleLogin = this.handleLogin.bind(this)
     }
-    handleChange(key, val) {
-        this.setState({
-            [key]: val
-        })
-    }
+    
 
     handleLogin() {
-        this.props.login(this.state)
+        this.props.login(this.props.state)
     }
     register() {
         this.props.history.push('/register')
@@ -41,13 +35,13 @@ class Login extends React.Component {
                     {this.props.msg ? <p className='error-msg'>{this.props.msg}</p> : null}
                     <List>
                         <InputItem
-                            onChange={v => this.handleChange('user', v)}
+                            onChange={v => this.props.handleChange('user', v)}
                         >
                             Username
                         </InputItem>
                         <InputItem
                             type="password"
-                            onChange={v => this.handleChange('pwd', v)}
+                            onChange={v => this.props.handleChange('pwd', v)}
                         >
                             Password
                         </InputItem>

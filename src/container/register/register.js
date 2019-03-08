@@ -5,11 +5,13 @@ import { List, InputItem, WingBlank, WhiteSpace, Button, Radio } from 'antd-mobi
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { register } from '../../redux/user.redux'
+import imoocForm from '../../components/imoocForm/imoocForm'
 
 @connect(
     state => state.user,
     { register }
 )
+@imoocForm
 class Register extends React.Component {
     constructor(props) {
         super(props)
@@ -43,7 +45,7 @@ class Register extends React.Component {
         const RadioItem = Radio.RadioItem
         const { type } = this.state
         const data = [
-            { type: 'genuis', label: 'genuis' },
+            { type: 'genius', label: 'genius' },
             { type: 'boss', label: 'boss' },
         ]
         return (

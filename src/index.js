@@ -12,11 +12,13 @@ import {
     Switch
 } from 'react-router-dom'
 import './config'
+import './index.css'
 import Login from './container/login/login'
 import Register from './container/register/register'
 import AuthRoute from './components/authroute/authRoute'
 import BossInfo from './container/bossinfo/bossinfo'
 import GenuisInfo from './container/genuisinfo/genuisinfo'
+import Dashboard from './components/dashboard/dashboard'
 
 
 const reduxDevtools = window.devToolsExtension ? window.devToolsExtension() : f => f
@@ -32,10 +34,13 @@ ReactDOM.render(
         <BrowserRouter>
             <div>
                 <AuthRoute></AuthRoute>
+                <Switch>
                 <Route path='/geniusinfo' component={GenuisInfo}></Route>
                 <Route path='/bossinfo' component={BossInfo}></Route>
                 <Route path='/login' component={Login}></Route>
                 <Route path='/Register' component={Register}></Route>
+                <Route component={Dashboard}></Route>
+                </Switch>          
             </div>
         </BrowserRouter>
     </Provider>
