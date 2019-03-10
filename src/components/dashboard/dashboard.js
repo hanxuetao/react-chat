@@ -6,16 +6,22 @@ import { connect } from 'react-redux'
 import Boss from '../boss/boss'
 import Genius from '../genius/genius'
 import User from '../user/user'
-
-function Msg() {
-    return <h2>Msg Page</h2>
-}
+import Msg from '../../components/msg/msg'
+import { getMsgList, recvMsg } from '../../redux/chat.redux'
 
 
 @connect(
-    state => state
+    state => state,
+    { getMsgList, recvMsg }
 )
 class Dashboard extends React.Component {
+
+    componentDidMount() {
+        if (!this.props.chat.chatmsg.length) {
+            this.props.getMsgList()
+            this.props.recvMsg()
+        }
+    }
 
     render() {
         const { pathname } = this.props.location
@@ -52,8 +58,11 @@ class Dashboard extends React.Component {
                 component: User,
             }
         ]
+        // console.log(pathname)
+        // console.log(navList.find(v =>v.path))
+        // 这里刷新以后会拿不到数据
         return (
-            <div>
+                <div>
                 <NavBar>{navList.find(v =>v.path===pathname).title}</NavBar>
                 <div>
 						<Switch>
@@ -64,6 +73,8 @@ class Dashboard extends React.Component {
 				</div>
                 <NavLinkBar className="nav-tab-bar" data={navList}></NavLinkBar>
             </div>
+               
+            
         )
     }
 }

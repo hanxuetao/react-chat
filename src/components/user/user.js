@@ -35,7 +35,7 @@ class User extends React.Component {
             <div>
                 <Result
                     img={<img src={require(`../img/${props.avatar}.png`)} style={{ width: 50 }} alt="" />}
-                    title={props.title}
+                    title={props.user}
                     message={props.type === 'boss' ? props.company : null}
                 />
                 <List renderHeader={() => 'Introduction'} className="user-info">
